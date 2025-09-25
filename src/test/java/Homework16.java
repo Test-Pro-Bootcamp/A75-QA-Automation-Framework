@@ -12,7 +12,7 @@ public class Homework16 extends BaseTest {
    @Test
     public  void  registrationPage(){
        String url = "https://qa.koel.app";
-        driver.get(url); 
+        driver.get(url);
 
         //Test Steps
         WebElement registration = driver.findElement(By.cssSelector("a[href='registration']"));
