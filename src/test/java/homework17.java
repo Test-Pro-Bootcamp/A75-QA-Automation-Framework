@@ -22,7 +22,7 @@ String ExpectedString = "Added 1 song into \"Wiles Playlist.\"";
      addToBtn();
      Thread.sleep(2000);
      addToPlaylist();
-     Threavd.sleep(2000);
+     Thread.sleep(2000);
      successShow();
      Thread.sleep(2000);
 

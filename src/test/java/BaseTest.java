@@ -63,6 +63,7 @@ public class BaseTest {
         driver.get(URL);
     }
 
+    //homework17 
     public String successShow() {
      WebElement notification = driver.findElement(By.xpath("//div[@class= 'success show']"));
      return   notification.getText();
@@ -94,6 +95,7 @@ public class BaseTest {
         search.sendKeys(song);
     }
 
+    //homework18
     public boolean pauseBtn() {
         WebElement pauseButton = driver.findElement(By.xpath("//footer[@id= 'mainFooter']//span[@class= 'pause']"));
         return true;
@@ -107,5 +109,21 @@ public class BaseTest {
     public void nextBtn() {
         WebElement nextSong = driver.findElement(By.xpath("//footer[@id= 'mainFooter']//i[@title= 'Play next song']"));
         nextSong.click();
+    }
+
+    // deletePlaylist homework19
+    public String deletedPlaylistMessage() {
+        WebElement deletedMessage = driver.findElement(By.xpath("//div[@class= 'success show']"));
+        return deletedMessage.getText();
+    }
+
+    public void deletethePlaylist() throws InterruptedException {
+        WebElement deletePlaylist = driver.findElement(By.xpath("//button[@class= 'del btn-delete-playlist']"));
+        deletePlaylist.click();
+    }
+
+    public void clickPlaylist() {
+        WebElement wilesplaylist = driver.findElement(By.xpath("//a[@href= '#!/playlist/105903']"));
+        wilesplaylist.click();
     }
 }
