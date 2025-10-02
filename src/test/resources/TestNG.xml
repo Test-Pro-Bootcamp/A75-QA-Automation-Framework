@@ -11,6 +11,7 @@
             <class name="Homework16"/>
             <class name="homework17"/>
             <class name="Homework19"/>
+            <class name="Homework19Test"/>
         </classes>
     </test>
 </suite>
