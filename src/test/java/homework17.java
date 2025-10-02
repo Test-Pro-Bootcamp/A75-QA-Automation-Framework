@@ -14,17 +14,17 @@ String ExpectedString = "Added 1 song into \"Wiles Playlist.\"";
 
     //Steps
      searchSong("song");
-     Thread.sleep(2000);
+
      viewAll();
-     Thread.sleep(2000);
+
      clickSong();
-     Thread.sleep(2000);
+
      addToBtn();
-     Thread.sleep(2000);
+
      addToPlaylist();
-     Thread.sleep(2000);
+
      successShow();
-     Thread.sleep(2000);
+
 
      //Expected Result
      Assert.assertEquals(successShow(), ExpectedString);

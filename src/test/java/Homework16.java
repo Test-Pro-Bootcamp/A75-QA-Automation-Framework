@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,7 +16,8 @@ public class Homework16 extends BaseTest {
         driver.get(url);
 
         //Test Steps
-        WebElement registration = driver.findElement(By.cssSelector("a[href='registration']"));
+       // WebElement registration = driver.findElement(By.cssSelector("a[href='registration']"));
+       WebElement registration = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[href='registration']")));
         registration.click();
         String regUrl = "https://qa.koel.app/registration";
         

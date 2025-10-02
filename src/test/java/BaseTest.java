@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
 import java.net.URL;
@@ -15,6 +17,8 @@ import org.testng.annotations.BeforeMethod;
 public class BaseTest {
     public WebDriver driver;
     public String url;
+    WebDriverWait wait;
+
 
     @BeforeSuite
     static void setupClass() {
@@ -30,6 +34,7 @@ public class BaseTest {
         //Preconditions
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
         url = BaseURL;
         navigatetoURL(url);
@@ -65,32 +70,38 @@ public class BaseTest {
 
     //homework17
     public String successShow() {
-     WebElement notification = driver.findElement(By.xpath("//div[@class= 'success show']"));
+     //WebElement notification = driver.findElement(By.xpath("//div[@class= 'success show']"));
+     WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class= 'success show']")));
      return   notification.getText();
     }
 
     public void addToPlaylist() {
-     WebElement addToPlaylist = driver.findElement(By.xpath("//section[@id= 'songResultsWrapper']//li[contains(text() , 'Wiles Playlist')]"));
+    // WebElement addToPlaylist = driver.findElement(By.xpath("//section[@id= 'songResultsWrapper']//li[contains(text() , 'Wiles Playlist')]"));
+        WebElement addToPlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id= 'songResultsWrapper']//li[contains(text(), 'Wiles Playlist')]")));
      addToPlaylist.click();
     }
 
     public void addToBtn() {
-        WebElement addTo = driver.findElement(By.cssSelector("button.btn-add-to"));
+        //WebElement addTo = driver.findElement(By.cssSelector("button.btn-add-to"));
+        WebElement addTo = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button.btn-add-to")));
         addTo.click();
     }
 
     public void clickSong() {
-        WebElement clickSong = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//td[@class='title']"));
+        //WebElement clickSong = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//td[@class='title']"));
+        WebElement clickSong = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='songResultsWrapper']//td[@class='title']")));
         clickSong.click();
     }
 
     public void viewAll() {
-        WebElement viewAll = driver.findElement(By.cssSelector("button[data-test='view-all-songs-btn']"));
+       // WebElement viewAll = driver.findElement(By.cssSelector("button[data-test='view-all-songs-btn']"));
+        WebElement viewAll = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[data-test='view-all-songs-btn']")));
         viewAll.click();
     }
 
     public void searchSong(String song) {
-        WebElement search = driver.findElement(By.xpath("//input[@type= 'search']"));
+       // WebElement search = driver.findElement(By.xpath("//input[@type= 'search']"));
+        WebElement search = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@type='search']")));
         search.clear();
         search.sendKeys(song);
     }
