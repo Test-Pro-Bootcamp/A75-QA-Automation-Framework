@@ -63,7 +63,7 @@ public class BaseTest {
         driver.get(URL);
     }
 
-    //homework17 
+    //homework17
     public String successShow() {
      WebElement notification = driver.findElement(By.xpath("//div[@class= 'success show']"));
      return   notification.getText();
@@ -123,7 +123,7 @@ public class BaseTest {
     }
 
     public void clickPlaylist() {
-        WebElement wilesplaylist = driver.findElement(By.xpath("//a[@href= '#!/playlist/105903']"));
+        WebElement wilesplaylist = driver.findElement(By.cssSelector(".playlist:nth-child(3)"));
         wilesplaylist.click();
     }
 }
