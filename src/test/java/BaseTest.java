@@ -1,9 +1,8 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
@@ -18,6 +17,7 @@ public class BaseTest {
     public WebDriver driver;
     public String url;
     WebDriverWait wait;
+    Actions actions;
 
 
     @BeforeSuite
@@ -38,6 +38,7 @@ public class BaseTest {
         driver.manage().window().maximize();
         url = BaseURL;
         navigatetoURL(url);
+        actions = new Actions(driver);
     }
 
     @AfterMethod
@@ -150,5 +151,18 @@ public class BaseTest {
         //WebElement wilesplaylist = driver.findElement(By.cssSelector(".playlist:nth-child(3)"));
         WebElement wilesPlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)")));
         wilesPlaylist.click();
+    }
+
+    public void newPlaylistName(String newName ) {
+       WebElement reNameField = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@name='name']")));
+       reNameField.sendKeys(Keys.chord(Keys.COMMAND, "A"), Keys.BACK_SPACE);
+       reNameField.sendKeys(newName);
+       reNameField.sendKeys(Keys.ENTER);
+
+    }
+
+    public void doubleClick() {
+        WebElement existingPlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='playlists']//li[3]")));
+        actions.doubleClick(existingPlaylist).perform();
     }
 }
