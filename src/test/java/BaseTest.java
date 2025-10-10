@@ -46,7 +46,7 @@ public class BaseTest {
         driver.quit();
     }
 
-    public void submitBtn(){
+    /*public void submitBtn(){
         //WebElement submitBtn = driver.findElement(By.cssSelector("button[type='submit']"));
         WebElement submitBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
         submitBtn.click();
@@ -65,7 +65,7 @@ public class BaseTest {
         WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='email']")));
         emailField.clear();
         emailField.sendKeys(email);
-    }
+    }*/
 
     public void navigatetoURL(String URL) {
         //url = "https://qa.koel.app";

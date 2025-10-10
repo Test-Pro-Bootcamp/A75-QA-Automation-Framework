@@ -7,9 +7,9 @@ public class Homework19Test extends BaseTest {
     public  void secondDeletePlaylist () throws InterruptedException {
         String expectedString = "Deleted playlist \"Wiles Playlist.\"";
         //Preconditions
-        provideEmail("wiley.griffin@testpro.io");
-        providePassword("KUgY8Y1p");
-        submitBtn();
+       // provideEmail("wiley.griffin@testpro.io");
+       // providePassword("KUgY8Y1p");
+       // submitBtn();
 
 
         //Steps

@@ -6,9 +6,9 @@ public class homework17 extends BaseTest{
 public void addSongToPlaylist() throws InterruptedException {
 String ExpectedString = "Added 1 song into \"Wiles Playlist.\"";
  //preconditions
-    provideEmail("wiley.griffin@testpro.io");
-    providePassword("KUgY8Y1p");
-    submitBtn();
+    //provideEmail("wiley.griffin@testpro.io");
+    //providePassword("KUgY8Y1p");
+    //submitBtn();
     Thread.sleep(2000);
 
 

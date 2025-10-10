@@ -20,4 +20,14 @@ public class LoginPage extends BasePage {
     public void clickSubmit(){
         findElement(submitBtn).click();
     }
+    public  void login(){
+        PlayListPage playListPage = new PlayListPage(driver);
+        String updatedMsg = "Updated playlist \"Wiley Playlist.\"";
+        provideEmail("wiley.griffin@testpro.io");
+        providePassword("KUgY8Y1p");
+        clickSubmit();
+    }
+
+
+
 }

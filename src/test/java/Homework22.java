@@ -1,5 +1,6 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pom.LoginPage;
 import pom.PlayListPage;
 
 /**
@@ -10,10 +11,11 @@ public class Homework22 extends BaseTest {
             public void newPlaylistName(){
         //Preconditions
         PlayListPage playListPage = new PlayListPage(driver);
+        LoginPage loginPage = new LoginPage(driver);
         String updatedMsg = "Updated playlist \"Wiley Playlist.\"";
-        provideEmail("wiley.griffin@testpro.io");
-        providePassword("KUgY8Y1p");
-        submitBtn();
+
+        loginPage.login();
+
 
        //Steps
         playListPage.doubleClick();

@@ -5,9 +5,9 @@ public class homework18 extends BaseTest {
     @Test
     public void playSong() throws InterruptedException {
         //Preconditions
-        provideEmail("wiley.griffin@testpro.io");
-        providePassword("KUgY8Y1p");
-        submitBtn();
+       // provideEmail("wiley.griffin@testpro.io");
+       // providePassword("KUgY8Y1p");
+        //submitBtn();
 
         //Steps
 

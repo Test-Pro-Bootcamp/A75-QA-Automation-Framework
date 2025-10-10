@@ -9,9 +9,9 @@ public class Homework21 extends BaseTest{
     public void renamePlaylist() throws InterruptedException {
        //Preconditions
       String updatedMsg = "Updated playlist \"Updated Wiley Playlist.\"";
-       provideEmail("wiley.griffin@testpro.io");
-       providePassword("KUgY8Y1p");
-       submitBtn();
+       //provideEmail("wiley.griffin@testpro.io");
+       //providePassword("KUgY8Y1p");
+       //submitBtn();
        
        //Steps
        //doubleClick();

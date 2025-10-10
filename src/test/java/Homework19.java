@@ -7,9 +7,9 @@ public class Homework19 extends BaseTest{
         //expected string for deleted playlist message
         String expectedString = "Deleted playlist \"Wiles Playlist.\"";
        //preconditions (login)
-        provideEmail("wiley.griffin@testpro.io");
-        providePassword("KUgY8Y1p");
-        submitBtn();
+       // provideEmail("wiley.griffin@testpro.io");
+        //providePassword("KUgY8Y1p");
+        // submitBtn();
 
 
         //Steps
