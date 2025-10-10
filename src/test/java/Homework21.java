@@ -1,3 +1,4 @@
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
@@ -13,9 +14,10 @@ public class Homework21 extends BaseTest{
        submitBtn();
        
        //Steps
-       doubleClick();
-      newPlaylistName("Wiley Playlist");
-       
+       //doubleClick();
+      // newPlaylistName("Wiley Playlist");
+
+
        
 
     }

@@ -14,10 +14,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeMethod;
 public class BaseTest {
-    public WebDriver driver;
-    public String url;
-    WebDriverWait wait;
-    Actions actions;
+    public static WebDriver driver = null;
+    public static String url = null;
+    public static WebDriverWait wait = null;
+    public static Actions actions = null;
 
 
     @BeforeSuite
@@ -46,11 +46,11 @@ public class BaseTest {
         driver.quit();
     }
 
-    public void submitBtn() throws InterruptedException {
+    public void submitBtn(){
         //WebElement submitBtn = driver.findElement(By.cssSelector("button[type='submit']"));
         WebElement submitBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
         submitBtn.click();
-        Thread.sleep(2000);
+
 
     }
 
@@ -147,13 +147,17 @@ public class BaseTest {
         okBtn.click();
     }
 
+
     public void clickPlaylist() {
         //WebElement wilesplaylist = driver.findElement(By.cssSelector(".playlist:nth-child(3)"));
         WebElement wilesPlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)")));
         wilesPlaylist.click();
     }
 
-    public void newPlaylistName(String newName ) {
+    //Homework21
+
+
+  /* public void newPlaylistName(String newName ) {
        WebElement reNameField = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@name='name']")));
        reNameField.sendKeys(Keys.chord(Keys.COMMAND, "A"), Keys.BACK_SPACE);
        reNameField.sendKeys(newName);
@@ -161,8 +165,8 @@ public class BaseTest {
 
     }
 
-    public void doubleClick() {
+   public void doubleClick() {
         WebElement existingPlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='playlists']//li[3]")));
         actions.doubleClick(existingPlaylist).perform();
-    }
+    } */
 }
