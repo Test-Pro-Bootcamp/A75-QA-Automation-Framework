@@ -1,13 +1,19 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pom.HomePage;
+import pom.LoginPage;
 
 import java.time.Duration;
 
 public class LoginTests extends BaseTest {
-    @Test
+
     public void loginEmptyEmailPassword() {
 
 //      Added ChromeOptions argument below to fix websocket error
@@ -19,9 +25,47 @@ public class LoginTests extends BaseTest {
 
         // TODO (for students): Review the configuration as part of HW15
 
-        String url = "httpps://qa.koel.app/";
+        String url = "https://qa.koel.app/";
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
         driver.quit();
     }
+    @Test
+    public void loginValidEmailPassword() throws InterruptedException {
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        loginPage.provideEmail("felicia.clay@testpro.io");
+        loginPage.providePassword("ACw0FWOe");
+        loginPage.clickSubmit();
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+        //WebElement avataricon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//img[@class='avatar']")));
+        //driver.quit();
+    }
+    @Test
+    public void incorrectEmailCorrectPassword() throws InterruptedException {
+        //opening URL
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        loginPage.provideEmail("incorrect@testpro.io");
+        loginPage.providePassword("ACw0FWOe");
+        loginPage.clickSubmit();
+        //Thread.sleep(2000);
+
+        //Expected Result
+        Assert.assertEquals(driver.getCurrentUrl(), url);
+    }
+    /*
+    @Test
+    public void incorrectDataTest(String email , String password) throws InterruptedException{
+
+        provideEmail(email);
+        providePassword(password);
+        clickSubmitBtn();
+        //Thread.sleep(2000);
+
+        //Expected Result
+        Assert.assertEquals(driver.getCurrentUrl(),url);
+    }*/
 }
