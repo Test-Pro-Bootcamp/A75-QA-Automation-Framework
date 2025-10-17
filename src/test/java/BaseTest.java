@@ -40,7 +40,7 @@ public class BaseTest {
 
 
         //Preconditions
-        driver = new ChromeDriver(options);
+        //driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
