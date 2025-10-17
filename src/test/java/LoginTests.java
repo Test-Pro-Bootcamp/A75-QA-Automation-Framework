@@ -16,8 +16,8 @@ import java.time.Duration;
 public class LoginTests extends BaseTest {
     @Test
 public void loginValidEmailPassword(){
-        LoginPage loginpage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+        LoginPage loginpage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
 
         loginpage.provideEmail("wiley.griffin@testpro.io")
                 .providePassword("KUgY8Y1p")

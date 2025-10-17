@@ -14,14 +14,14 @@ public class Homework16 extends BaseTest {
    @Test
     public  void  registrationPage(){
        //Preconditions
-       LoginPage loginPage = new LoginPage(driver);
+       LoginPage loginPage = new LoginPage(getDriver());
        String regUrl = "https://qa.koel.app/registration";
 
        //Test Steps
        loginPage.registration();
 
        //Expected Result
-        Assert.assertEquals(driver.getCurrentUrl(), regUrl);
+        Assert.assertEquals(getDriver().getCurrentUrl(), regUrl);
 
    }
 }
