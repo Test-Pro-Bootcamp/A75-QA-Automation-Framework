@@ -1,16 +1,11 @@
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pagefactory.LoginPage;
 import pagefactory.HomePage;
+import pagefactory.LoginPage;
 
-public class LoginTests extends BaseTest {
-    private static final Logger log = LoggerFactory.getLogger(LoginTests.class);
-
+public class Homework17 extends BaseTest {
     @Test
-    public void loginValidEmailPassword() {
-
+    public void addSongToPlaylist() {
         //LoginPage loginPage = new LoginPage(driver);
         //HomePage homePage = new HomePage(driver);
         LoginPage loginPage = new LoginPage(getDriver());
@@ -19,5 +14,15 @@ public class LoginTests extends BaseTest {
         loginPage.provideEmail("jennifer.de.jesus@testpro.io").providePassword("FCVlLOni").clickSubmit();
 
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+
+        homePage.searchSong("Down in the Swamp");
+        homePage.clickViewAll();
+        homePage.selectSongByTitle("Down in the Swamp");
+        homePage.clickAddToButton();
+        homePage.choosePlaylist("Jennys Playlist");
+
+        String expectedMessage = "Added 1 song into \"Jennys Playlist.\"";
+
+        Assert.assertEquals(homePage.getAddToPlaylistSuccessMsg(), expectedMessage);
     }
 }

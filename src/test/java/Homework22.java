@@ -1,15 +1,12 @@
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pagefactory.LoginPage;
 import pagefactory.HomePage;
+import pagefactory.LoginPage;
 
-public class LoginTests extends BaseTest {
-    private static final Logger log = LoggerFactory.getLogger(LoginTests.class);
+public class Homework22 extends BaseTest{
 
     @Test
-    public void loginValidEmailPassword() {
+    public void renamePlaylist(){
 
         //LoginPage loginPage = new LoginPage(driver);
         //HomePage homePage = new HomePage(driver);
@@ -17,7 +14,16 @@ public class LoginTests extends BaseTest {
         HomePage homePage = new HomePage(getDriver());
 
         loginPage.provideEmail("jennifer.de.jesus@testpro.io").providePassword("FCVlLOni").clickSubmit();
-
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+
+        String playlistId = "Jennys fourth Playlist";
+        String newPlaylistName = "Edited Jennys fourth Playlist";
+
+        homePage.openPlaylist2(playlistId);
+        homePage.renamePlaylist(newPlaylistName);
+
+        String updatedPlaylistMsg = "Updated playlist \"Edited Jennys fourth Playlist.\"";
+        Assert.assertEquals(homePage.getRenameMessage(), updatedPlaylistMsg);
     }
 }
+
