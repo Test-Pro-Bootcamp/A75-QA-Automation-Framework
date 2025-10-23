@@ -13,12 +13,15 @@ public class LoginPage extends BasePage {
     By submitBtn = By.cssSelector("button[type='submit']");
     By registrationLink = By.cssSelector("a[href='registration']");
     public void provideEmail(String email){
+
         findElement(emailField).sendKeys(email);
     }
     public void providePassword(String password){
+
         findElement(passwordField).sendKeys(password);
     }
     public void clickSubmit(){
+
         findElement(submitBtn).click();
     }
     public  void login(){

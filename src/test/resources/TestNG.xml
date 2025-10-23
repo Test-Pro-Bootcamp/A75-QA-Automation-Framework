@@ -9,11 +9,11 @@
             <class name="LoginTests"/>
             <class name="BaseTest"/>
             <class name="Homework16"/>
-           <!-- <class name="homework17"/>
+           <class name="homework17"/>
            <class name="homework18"/>
             <class name="Homework19"/>
             <class name="Homework21"/>
-            <class name="Homework22"/> -->
+            <class name="Homework22"/>
         </classes>
     </test>
 </suite>
