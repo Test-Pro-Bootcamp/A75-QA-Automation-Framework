@@ -23,4 +23,16 @@ public void loginValidEmailPassword(){
                 .providePassword("KUgY8Y1p")
                 .clickSubmit();
     }
+
+   @Test
+    public void registrationVerification(){
+        LoginPage loginPage = new LoginPage(getDriver());
+        String regUrl = "https://qa.koel.app/registration";
+
+        loginPage.clickReg();
+
+        Assert.assertEquals(getDriver().getCurrentUrl(), regUrl);
+
+
+    }
 }

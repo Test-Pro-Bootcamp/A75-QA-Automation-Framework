@@ -3,7 +3,7 @@ import org.testng.annotations.Test;
 import pom.HomePage;
 import pom.LoginPage;
 
-public class homework18 extends BaseTest {
+public class HomePageTests extends BaseTest {
     @Test
     public void playSong() throws InterruptedException {
         HomePage homePage = new HomePage(driver);

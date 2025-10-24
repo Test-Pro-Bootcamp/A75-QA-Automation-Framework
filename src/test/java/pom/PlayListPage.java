@@ -17,7 +17,7 @@ public class PlayListPage extends BasePage {
     By firstPlaylist = By.xpath("//section[@id='playlists']//li[3]");
     By newName = By.xpath("//input[@name='name']");
     By successMSG = By.xpath("//div[@class= 'success show']");
-    By clickPlaylist = By.cssSelector(".playlist:nth-child(3)");
+    By clickPlaylist = By.cssSelector(".playlist:nth-child(4)");
     By deletePlaylist = By.xpath("//button[@class='del btn-delete-playlist']");
     By okayBtn = By.xpath("//button[@class='ok']");
     By deleteMSG = By.xpath("//div[@class='success show']");

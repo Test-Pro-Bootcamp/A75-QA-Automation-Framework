@@ -7,26 +7,37 @@ import org.openqa.selenium.support.FindBy;
 /**
  * @author wiles42
  */
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
     @FindBy(css = "input[type='email']")
     WebElement emailField;
     @FindBy(css = "input[type='password']")
     WebElement passwordField;
     @FindBy(css = "button[type='submit']")
     WebElement submitBtn;
-    public LoginPage (WebDriver givenDriver){
+    @FindBy(css = "a[href='registration']")
+    WebElement registrationLink;
+
+    public LoginPage(WebDriver givenDriver) {
         super(givenDriver);
     }
-    public LoginPage provideEmail(String email){
+
+    public LoginPage provideEmail(String email) {
         emailField.sendKeys(email);
         return this;
     }
-    public LoginPage providePassword(String password){
+
+    public LoginPage providePassword(String password) {
         passwordField.sendKeys(password);
         return this;
     }
+
     public LoginPage clickSubmit() {
         submitBtn.click();
         return this;
+    }
+
+    public LoginPage clickReg() {
+        registrationLink.click();
+        return null;
     }
 }
