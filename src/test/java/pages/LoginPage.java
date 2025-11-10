@@ -1,29 +1,41 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
-    private static final By EMAIL    = By.cssSelector("input[type='email']");
-    private static final By PASSWORD = By.cssSelector("input[type='password']");
-    private static final By SUBMIT   = By.cssSelector("button[type='submit']");
+
+    @FindBy(css = "input[type='email']")
+    private WebElement emailInput;
+
+    @FindBy(css = "input[type='password']")
+    private WebElement passwordInput;
+
+    @FindBy(css = "button[type='submit']")
+    private WebElement submitBtn;
 
     public LoginPage(WebDriver driver) {
-        super(driver);
+        super(driver); // BasePage calls PageFactory.initElements(driver, this)
     }
 
-    public void provideEmail(String email)   { type(EMAIL, email); }
-    public void providePassword(String pass) { type(PASSWORD, pass); }
-    public void clickSubmitBtn()             { safeClick(SUBMIT); }
+    // non-fluent
+    public void provideEmail(String email)   { type(emailInput, email); }
+    public void providePassword(String pass) { type(passwordInput, pass); }
+    public void clickSubmitBtn()             { safeClick(submitBtn); }
 
-    // Return HomePage and wait for it to be ready
+    // convenience: do the login and return HomePage when loaded
     public HomePage loginAs(String email, String pass) {
         provideEmail(email);
         providePassword(pass);
         clickSubmitBtn();
         HomePage home = new HomePage(driver);
-        // wait for home-loaded condition
-        home.isLoaded(); // we call it to block until ready
+        home.isLoaded();  // blocks until a home-unique element is visible
         return home;
     }
+
+    // optional fluent style
+    public LoginPage withEmail(String email){ type(emailInput, email); return this; }
+    public LoginPage withPassword(String p){ type(passwordInput, p); return this; }
+    public HomePage submitExpectHome(){ safeClick(submitBtn); HomePage h=new HomePage(driver); h.isLoaded(); return h; }
 }

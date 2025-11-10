@@ -16,24 +16,33 @@ public class BasePage {
     protected BasePage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        PageFactory.initElements(driver, this); // harmless if not using @FindBy
+        PageFactory.initElements(driver, this);
     }
 
+    // ----- For @FindBy WebElements -----
+    protected WebElement waitVisible(WebElement el) {
+        return wait.until(ExpectedConditions.visibilityOf(el));
+    }
+    protected WebElement waitClickable(WebElement el) {
+        return wait.until(ExpectedConditions.elementToBeClickable(el));
+    }
+    protected void type(WebElement el, String text) {
+        WebElement e = waitVisible(el);
+        e.clear();
+        e.sendKeys(text);
+    }
+    protected void safeClick(WebElement el) {
+        waitClickable(el).click();
+    }
+
+    // ----- Keep these overloads for dynamic By locators (optional) -----
     protected WebElement waitVisible(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
-
     protected WebElement waitClickable(By locator) {
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
-
     protected void safeClick(By locator) {
         waitClickable(locator).click();
-    }
-
-    protected void type(By locator, String text) {
-        WebElement el = waitVisible(locator);
-        el.clear();
-        el.sendKeys(text);
     }
 }
