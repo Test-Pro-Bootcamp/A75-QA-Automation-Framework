@@ -72,11 +72,14 @@ public class SprintLoginTests extends BaseTest {
         artistsPage.clickArtistPage();
         // User Verifies the header on the Artist Page
         assertEquals(artistsPage.getArtistHeaderText(), artistPageHeader);
-
+        // Navigate to All Songs Page
         allSongsPage.clickAllSongsPage();
+        // Verify All Songs Header is present
         assertEquals(allSongsPage.getAllSongsHeaderText(), allSongsHead);
 
+        // User Navigates to Favorites Page
         favoritesPage.clickFavorites();
+        // Verify Header on Favorites Page
         assertEquals(favoritesPage.getFavoritesHeader(), favoritesHead);
 
         recentlyPlayedPage.recentlyPlayedClick();

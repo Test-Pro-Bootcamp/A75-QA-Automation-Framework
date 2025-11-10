@@ -29,7 +29,7 @@ public class SprintLogOut extends BaseTest {
         Assert.assertTrue(loginPage.logOutBtnVisible());
         // Log Out
         loginPage.logout();
-       // Verify user is logged out 
+       // Verify user is logged out
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
     }
 
