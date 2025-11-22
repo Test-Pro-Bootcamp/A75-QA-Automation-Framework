@@ -1,0 +1,55 @@
+package pom;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+public class BasePage {
+    WebDriver driver;
+    WebDriverWait wait;
+    Actions actions;
+
+    public BasePage( WebDriver givenDriver) {
+        driver = givenDriver;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        actions = new Actions(driver);
+    }
+
+    By LogoutBtn = By.xpath("//*[@id='userBadge']/a[2]");
+
+    public WebElement findElement(By locator) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+    public void click (By locator) {
+       findElement(locator).click();
+    }
+
+    public void clickLogout(){
+        findElement(LogoutBtn).click();
+    }
+
+    public WebElement doubleClick(By locator) {
+         actions.doubleClick(findElement(locator)).perform();
+         return findElement(locator);
+    }
+
+    /*public void chooseAllSongsList() {
+        click(allSongsList);
+    }
+    public void isSongPlaying() {
+        return findElement(soundBarVisualizer).isDisplayed();
+    }*/
+    public WebElement rightClick(By locator) {
+        actions.contextClick(findElement(locator)).perform();
+        return findElement(locator);
+    }
+    public void hoverPlay(By locator) {
+        actions.moveToElement(findElement(locator)).perform();
+    }
+
+}
