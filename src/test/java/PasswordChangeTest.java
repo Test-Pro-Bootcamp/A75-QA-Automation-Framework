@@ -16,22 +16,22 @@ public class PasswordChangeTest extends BaseTest{
 
         //login
         loginPage.provideEmail("wiley.griffin@testpro.io");
-        loginPage.providePassword("guitarl3ss0n1!");
+        loginPage.providePassword("guitarl3sson1!");
         loginPage.clickSubmit();
 
 
         //navigate to profile page
         profilePreferencesPage.clickProfilePage();
         //change password
-        profilePreferencesPage.inputCurrentPassword("guitarl3ss0n1!");
-        profilePreferencesPage.inputNewPassword("guitarl3sson1!");
+        profilePreferencesPage.inputCurrentPassword("guitarl3sson1!");
+        profilePreferencesPage.inputNewPassword("guitarl3ss0n1!");
         profilePreferencesPage.clickSaveBtn();
        //logout
         profilePreferencesPage.clickLogOut();
 
         //login with invalid password
         loginPage.provideEmail("wiley.griffin@testpro.io");
-        loginPage.providePassword("guitarl3ss0n1!");
+        loginPage.providePassword("guitarl3sson1!");
         loginPage.clickSubmit();
 
        //verify old password does not work
