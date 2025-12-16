@@ -1,6 +1,7 @@
 package pagefactory;
 
 
+import io.cucumber.java.zh_cn.假如;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,6 +22,12 @@ public class HomePage extends BasePage {
     WebElement successShow;
     @FindBy (css = "img.avatar")
     WebElement userAvatar;
+    @FindBy (xpath = "//a[@href='#!/home']")
+    WebElement homeLink;
+    @FindBy (xpath ="(//button[@data-test='like-btn'])[1]" )
+    WebElement heartFirstSong;
+    @FindBy (xpath = "(//i[@class='fa fa-heart text-maroon'])[1]")
+    WebElement heartedFirstSong;
 
     public HomePage(WebDriver givenDriver) {
         super(givenDriver);
@@ -51,6 +58,20 @@ public class HomePage extends BasePage {
     }
     public WebElement getUserAvatar(){
         return findElement(userAvatar);
+    }
+    public void likeFirstSong (){
+        wait.until(ExpectedConditions.visibilityOf(heartFirstSong));
+        heartFirstSong.click();
+    }
+    public Boolean firstSongHearted(){
+        wait.until(ExpectedConditions.visibilityOf(heartedFirstSong));
+        heartedFirstSong.isDisplayed();
+        return null;
+    }
+
+    public void clickHomeLink (){
+        wait.until(ExpectedConditions.visibilityOf(homeLink));
+        homeLink.click();
     }
 }
 

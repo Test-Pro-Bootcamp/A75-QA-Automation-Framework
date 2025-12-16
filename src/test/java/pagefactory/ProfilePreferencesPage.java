@@ -1,12 +1,16 @@
 package pagefactory;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
+
+import static org.openqa.selenium.Keys.*;
 
 /**
  * @author wiles42
@@ -25,6 +29,14 @@ public class ProfilePreferencesPage extends BasePage{
     WebElement clickSavePassword;
     @FindBy (xpath = "//a[@title='Log student out']")
     WebElement logOutBtn;
+    @FindBy (id= "inputProfileEmail")
+    WebElement emailInput;
+    @FindBy (xpath = "//input[@id='inputProfileEmail']")
+    WebElement inputEmail;
+    @FindBy (xpath = "//div[@class='success show']")
+    WebElement profileUpdated;
+    @FindBy (xpath = "//div[@class='error show']")
+    WebElement sameEmailAddress;
 
     public void clickProfilePage(){
         wait.until(ExpectedConditions.visibilityOf(profileName));
@@ -54,6 +66,36 @@ public class ProfilePreferencesPage extends BasePage{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.urlToBe(homeURL));
         return driver.getCurrentUrl().equals(homeURL);
+    }
+    public String getEmailValidation(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        return (String) js.executeScript("return arguments[0].validationMessage;", emailInput);
+
+}
+    public void inputNewEmail(String NewEmail){
+        click(inputEmail);
+    inputEmail.sendKeys(COMMAND,"A");
+    inputEmail.sendKeys(BACK_SPACE);
+    inputEmail.sendKeys(NewEmail);
+    inputEmail.sendKeys(ENTER);
+}
+    public boolean successfulUpdate (){
+        try {
+            wait.until(ExpectedConditions.visibilityOf(profileUpdated));
+            return profileUpdated.isDisplayed();
+        } catch (Exception e){
+            return false;
+        }
+
+
+    }
+    public boolean errorMessage(){
+        try {
+            wait.until(ExpectedConditions.visibilityOf(sameEmailAddress));
+            return  sameEmailAddress.isDisplayed();
+        } catch (Exception e){
+            return false;
+        }
     }
 
 
