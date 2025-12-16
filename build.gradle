@@ -32,8 +32,8 @@ test {
         //suites "src/test/resources/InfoPanelTests.xml"
         //suites "src/test/resources/ChangePassword.xml"
        // suites "src/test/resources/NewPlaylistCreation.xml"
-        suites "src/test/resources/ChangeEmailTest.xml"
-        //suites "src/test/resources/FavoritesTest.xml"
+       // suites "src/test/resources/ChangeEmailTest.xml"
+        suites "src/test/resources/FavoritesTest.xml"
        // suites "src/test/resources/SearchTest.xml"
 
 
