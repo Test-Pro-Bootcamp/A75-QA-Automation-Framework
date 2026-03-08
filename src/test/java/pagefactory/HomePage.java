@@ -59,6 +59,10 @@ public class HomePage extends BasePage {
     public WebElement getUserAvatar(){
         return findElement(userAvatar);
     }
+    public boolean Avateristhere(){
+        userAvatar.isDisplayed();
+        return true;
+    }
     public void likeFirstSong (){
         wait.until(ExpectedConditions.visibilityOf(heartFirstSong));
         heartFirstSong.click();
@@ -72,6 +76,10 @@ public class HomePage extends BasePage {
     public void clickHomeLink (){
         wait.until(ExpectedConditions.visibilityOf(homeLink));
         homeLink.click();
+    }
+    public boolean isUserOnHomePage (){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        return driver.getCurrentUrl().contains("https://qa.koel.app/#!/home");
     }
 }
 

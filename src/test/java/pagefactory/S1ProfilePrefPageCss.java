@@ -33,6 +33,7 @@ public class S1ProfilePrefPageCss extends BasePage {
     WebElement lgOtcss;
     By logoutBy = new By.ByCssSelector("a.logout");
 
+
    public S1ProfilePrefPageCss clkProfPge (){
        wait.until(ExpectedConditions.elementToBeClickable(goToPrefPage));
        goToPrefPage.click();

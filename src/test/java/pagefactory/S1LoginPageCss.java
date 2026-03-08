@@ -21,6 +21,8 @@ public class S1LoginPageCss extends BasePage {
     WebElement cssSubmit;
     @FindBy(css = "form[class~= 'error']")
     WebElement cssErr;
+    @FindBy (css = "a[href='registration']" )
+    WebElement regPageLink;
 
     public S1LoginPageCss giveEmail(String email) {
         cssEmail.sendKeys(email);
@@ -44,6 +46,10 @@ public class S1LoginPageCss extends BasePage {
     public boolean redErr(){
         wait.until(ExpectedConditions.visibilityOf(cssErr));
         return true;
+    }
+    public S1LoginPageCss clickReg (){
+        regPageLink.click();
+        return this;
     }
 
 
